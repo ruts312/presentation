@@ -11,7 +11,7 @@
         * {
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'PT Serif', serif;
             margin: 0;
@@ -26,7 +26,7 @@
             padding-top: 40px;
             padding-bottom: 140px;
         }
-        
+
         .slide {
             width: 1280px;
             min-height: 900px;
@@ -37,11 +37,22 @@
             transition: opacity 0.5s ease-in-out;
             margin: 0 auto;
         }
-        
+
         .slide.active {
             display: block;
             opacity: 1;
             animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .slide p,
@@ -56,17 +67,6 @@
         .slide h3 {
             overflow-wrap: anywhere;
             word-break: normal;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
         .ornament-pattern {
             background-image: url("https://page.gensparksite.com/slides_images/a91b2917e0608ac6dc828bf5f5ebb8a4.webp");
@@ -95,89 +95,39 @@
             z-index: 0;
             pointer-events: none;
         }
-        
         .controls {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
-            background: linear-gradient(135deg, rgba(74, 4, 4, 0.98) 0%, rgba(42, 10, 10, 0.98) 100%);
-            padding: 18px 35px;
-            border-radius: 60px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 
-                        0 5px 15px rgba(197, 160, 89, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(197, 160, 89, 0.4);
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.5s ease-out;
+            background: rgba(74, 4, 4, 0.95);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #c5a059;
         }
-        
-        @keyframes slideUp {
-            from {
-                bottom: -100px;
-                opacity: 0;
-            }
-            to {
-                bottom: 30px;
-                opacity: 1;
-            }
-        }
-        
         .controls button {
-            background: linear-gradient(135deg, #c5a059 0%, #d4af6a 100%);
+            background: #c5a059;
             color: #2a0a0a;
             border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
             font-family: 'PT Serif', serif;
             font-weight: bold;
-            font-size: 15px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s;
         }
-        
-        .controls button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .controls button:hover::before {
-            left: 100%;
-        }
-        
         .controls button:hover {
-            background: linear-gradient(135deg, #facc15 0%, #ffd93d 100%);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
+            background: #facc15;
+            transform: scale(1.05);
         }
-        
-        .controls button:active {
-            transform: translateY(0) scale(0.98);
-        }
-        
         .controls button:disabled {
-            opacity: 0.4;
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
-            background: linear-gradient(135deg, #8b7852 0%, #9a8560 100%);
-        }
-        
-        .controls button:disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.2);
         }
         .slide-counter {
             color: #c5a059;
