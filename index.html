@@ -79,9 +79,16 @@
             mix-blend-mode: multiply;
         }
         .paper-texture {
-            background-color: #fcfbf7;
+            background-color: #f7f1e5;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             position: relative;
+        }
+
+        .paper-texture,
+        .paper-texture p,
+        .paper-texture li,
+        .paper-texture h3 {
+            color: #2a0a0a;
         }
         .paper-texture::before {
             content: "";
@@ -94,6 +101,18 @@
             opacity: 0.5;
             z-index: 0;
             pointer-events: none;
+        }
+
+        .slide .w-\[420px\] {
+            width: 360px;
+        }
+
+        .slide .w-\[450px\] {
+            width: 380px;
+        }
+
+        .slide .h-\[500px\] {
+            height: 380px;
         }
         
         .controls {
