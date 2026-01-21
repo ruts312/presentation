@@ -16,24 +16,26 @@
             font-family: 'PT Serif', serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             background-color: #2a0a0a;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            padding-top: 40px;
+            padding-bottom: 140px;
         }
         
         .slide {
             width: 1280px;
-            height: 720px;
+            min-height: 900px;
+            height: auto;
             display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            margin: 0 auto;
         }
         
         .slide.active {
@@ -45,11 +47,11 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translate(-50%, -50%) scale(0.95);
+                transform: scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
+                transform: scale(1);
             }
         }
         .ornament-pattern {
