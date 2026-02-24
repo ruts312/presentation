@@ -19,26 +19,26 @@
             font-family: 'PT Serif', serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden; /* Prevent all scrolling */
             background-color: #2a0a0a;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding-top: 40px;
-            padding-bottom: 140px;
+            align-items: center; /* Center vertically */
+            height: 100vh;
         }
 
         .slide {
             width: 1280px;
-            min-height: 900px;
-            height: auto;
+            height: 900px; /* Fixed height */
             display: none;
-            position: relative;
+            position: absolute; /* Stack them */
+            top: 50%;
+            left: 50%;
+            margin: 0;
+            transform: translate(-50%, -50%) scale(var(--scale-factor, 1));
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            margin: 0 auto;
+            transform-origin: center center;
         }
 
         .slide.active {
@@ -50,12 +50,11 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+                transform: translate(-50%, -50%) scale(calc(var(--scale-factor, 1) * 0.95));
             }
-
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: translate(-50%, -50%) scale(var(--scale-factor, 1));
             }
         }
 
@@ -266,7 +265,7 @@
 
     <!-- Слайд 2: Исторический контекст -->
     <div class="slide" id="slide2">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute inset-0 vintage-texture pointer-events-none z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -366,7 +365,7 @@
 
     <!-- Слайд 3: Происхождение и ранние годы -->
     <div class="slide" id="slide3">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none"
                 style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
             </div>
@@ -471,7 +470,7 @@
 
     <!-- Слайд 4: Образ и Предания -->
     <div class="slide" id="slide4">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -493,6 +492,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Чтобы скрыть шрам, полученный в бою за свободу своего народа, Атаке-бий до конца жизни носил эту повязку. Для кыргызов она стала символом его мужества, самопожертвования и готовности проливать кровь за родную землю.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Народная память" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/bffaffae3c7be7e35f667806cb9cd010.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Народная память<br />(Образ батыра)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -500,7 +516,7 @@
 
     <!-- Слайд 5: Освобождение от джунгар -->
     <div class="slide" id="slide5">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none"
                 style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
             </div>
@@ -603,7 +619,7 @@
 
     <!-- Слайд 6: Войны с казахами -->
     <div class="slide" id="slide6">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute inset-0 vintage-texture pointer-events-none z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -717,7 +733,7 @@
 
     <!-- Слайд 7: Правление и политика -->
     <div class="slide" id="slide7">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none"
                 style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
             </div>
@@ -821,7 +837,7 @@
 
     <!-- Слайд 8: Взаимоотношения с Кокандом -->
     <div class="slide" id="slide8">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -843,6 +859,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Именно угроза со стороны Коканда во многом подтолкнула Атаке-бия искать союз с далекой, но могущественной Российской империей.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Защита рубежей" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/a580543b8af758a308cedf06b59deec6.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Защита рубежей<br />(Противостояние Коканду)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -850,7 +883,7 @@
 
     <!-- Слайд 9: Дипломатия с Россией -->
     <div class="slide" id="slide9">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none"
                 style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
             </div>
@@ -954,7 +987,7 @@
 
     <!-- Слайд 10: Посольство Абдурахмана Кучакова -->
     <div class="slide" id="slide10">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute inset-0 vintage-texture pointer-events-none z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -977,6 +1010,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">В январе 1787 года послы были тепло приняты самой императрицей Екатериной II, что положило начало долгосрочным связям между кыргызами и Российской империей.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Дипломатическая миссия" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/6875a5bb75fd74399bedb3d8d3556df5.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Дипломатическая миссия<br />(Посольство в Санкт-Петербург)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -984,7 +1034,7 @@
 
     <!-- Слайд 11: Дары Императрице -->
     <div class="slide" id="slide11">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
             <div class="absolute top-0 left-0 w-full h-4 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-4 bg-[#4a0404] z-20"></div>
@@ -1010,6 +1060,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Императрица Екатерина II ответила не менее щедро, пожаловав Атаке-бию серебряные рубли, именной памятный знак и гарантии благоволения кыргызам.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Признание и Уважение" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/1aec2657c56fb69e6889fa64095044c5.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Признание и Уважение<br />(Союз с Империей)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1017,7 +1084,7 @@
 
     <!-- Слайд 12: Переписка с Екатериной II -->
     <div class="slide" id="slide12">
-        <div class="w-full min-h-[900px] h-auto bg-[#f5f0e6] relative flex flex-col overflow-visible">
+        <div class="w-full h-[900px]  bg-[#f5f0e6] relative flex flex-col overflow-visible">
             <div class="absolute inset-0 z-0 opacity-10"
                 style="background-image: url('https://page.gensparksite.com/slides_images/a91b2917e0608ac6dc828bf5f5ebb8a4.webp'); background-size: cover; background-position: center;">
             </div>
@@ -1147,7 +1214,7 @@
 
     <!-- Слайд 13: Торговые караваны в Сибирь -->
     <div class="slide" id="slide13">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="w-full h-full flex flex-col pt-16 pb-12 px-16 relative z-10">
@@ -1168,6 +1235,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Это обеспечило экономический рост региона, приток новых товаров и укрепление авторитета бия среди соседних народов.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Новые горизонты" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://images.unsplash.com/photo-1548685934-1422ab88c9ae?q=80&w=800" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Новые горизонты<br />(Караванная торговля)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1175,7 +1259,7 @@
 
     <!-- Слайд 14: Переселение на Иссык-Куль -->
     <div class="slide" id="slide14">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="w-full h-full flex flex-col pt-16 pb-12 px-16 relative z-10">
@@ -1196,6 +1280,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Именно там, в окружении величественных гор Ала-Тоо, прошли последние годы жизни великого правителя.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Северный берег Иссык-Куля" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/6d907892e3cc0f8e4c630aa2778905cc.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Северный берег Иссык-Куля<br />(Новая родина)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1203,7 +1304,7 @@
 
     <!-- Слайд 15: Последние годы -->
     <div class="slide" id="slide15">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 opacity-5 pointer-events-none"
                 style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234a0404\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
             </div>
@@ -1302,7 +1403,7 @@
 
         <!-- Слайд 16: Потомки и Наследие -->
     <div class="slide" id="slide16">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="w-full h-full flex flex-col pt-16 pb-12 px-16 relative z-10">
@@ -1323,6 +1424,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Влияние потомков бия было настолько велико, что во времена Российской империи целая территориальная единица в регионе была официально названа <em>«Атаке волость»</em> в знак глубокого уважения и признания заслуг этого рода.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Наследие предков" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/6875a5bb75fd74399bedb3d8d3556df5.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Наследие предков<br />(Продолжение рода)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1330,7 +1448,7 @@
 
     <!-- Слайд 17: Роль в укреплении государственности -->
     <div class="slide" id="slide17">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#fcfbf7]">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#fcfbf7]">
             <div class="absolute inset-0 bg-[#f5f0e6] z-0"></div>
             <div class="absolute top-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
             <div class="absolute bottom-0 left-0 w-full h-3 bg-[#4a0404] z-20"></div>
@@ -1352,6 +1470,23 @@
                             <p class="text-lg text-gray-800 leading-relaxed">Инициировав первые международные отношения на высшем уровне, он фактически вывел кыргызский народ на международную арену, заложив крепкие камни в фундамент будущей кыргызской государственности.</p>
                         </div>
                     </div>
+                    <div class="w-[420px] relative flex flex-col items-center justify-center h-full pb-8">
+                        <div class="relative p-2 border-4 border-[#4a0404] bg-[#c5a059] shadow-2xl rounded-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative overflow-hidden h-[500px] w-full bg-gray-200">
+                                <img alt="Фундамент будущего" class="object-cover w-full h-full sepia-[.15] contrast-105" src="https://page.gensparksite.com/slides_images/a91b2917e0608ac6dc828bf5f5ebb8a4.webp" />
+                            </div>
+                            <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[#fcfbf7]"></div>
+                            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[#fcfbf7]"></div>
+                        </div>
+                        <div class="mt-6 text-center w-full">
+                            <div class="h-px bg-[#c5a059] w-24 mx-auto mb-2"></div>
+                            <p class="text-sm font-['PT_Serif'] text-[#4a0404] italic">
+                                Фундамент будущего<br />(Объединение народа)
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1359,7 +1494,7 @@
 
     <!-- Слайд 18: Историческое значение -->
     <div class="slide" id="slide18">
-        <div class="w-full min-h-[900px] h-auto overflow-visible relative bg-[#2a0a0a] text-white">
+        <div class="w-full h-[900px]  overflow-visible relative bg-[#2a0a0a] text-white">
             <div class="absolute inset-0 opacity-60 z-0"
                 style="background-image: url('https://www.genspark.ai/image_placeholder.png'); background-size: cover; background-position: center;">
             </div>
@@ -1518,6 +1653,20 @@
                 changeSlide(1);
             }
         });
+
+        
+        function calculateScale() {
+            // Calculate scale to fit horizontally and vertically with a little margin
+            // The controls are at the bottom, so leave some extra space at the bottom (e.g. 80px)
+            const availableHeight = window.innerHeight - 80; 
+            const scaleX = window.innerWidth / 1300; // 1280 + margin
+            const scaleY = availableHeight / 920; // 900 + margin
+            const scale = Math.min(scaleX, scaleY);
+            document.documentElement.style.setProperty('--scale-factor', scale);
+        }
+
+        window.addEventListener('resize', calculateScale);
+        calculateScale(); // Initial call
 
         // Initialize
         showSlide(currentSlide);
